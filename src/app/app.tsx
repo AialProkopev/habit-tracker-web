@@ -1,5 +1,3 @@
-import '@/app/App.css';
-
 function App() {
     return (
         <>
