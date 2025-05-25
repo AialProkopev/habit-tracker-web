@@ -53,7 +53,6 @@ export const eslintBoundariesConfig = {
         default: "disallow",
         message:
           "Модуль (${file.type}) должен импортироваться через public API. Прямой импорт из ${dependency.source} запрещен",
-
         rules: [
           {
             target: ["shared", "app"],
