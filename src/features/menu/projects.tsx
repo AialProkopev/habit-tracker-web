@@ -7,7 +7,7 @@ export default function Projects() {
 
   return (
     <div>
-      <h3>{UI_TEXT.menu_projects}</h3>
+      <h3 className="bg-red-300">{UI_TEXT.menu_projects}</h3>
       <ul>
         {projects.map((project) => (
           <li key={project.id}>
