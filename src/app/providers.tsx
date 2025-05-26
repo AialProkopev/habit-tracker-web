@@ -5,5 +5,5 @@ interface ProvidersProps {
 }
 
 export default function Providers({ children }: ProvidersProps) {
-  return <div>{children}</div>;
+  return <>{children}</>;
 }
