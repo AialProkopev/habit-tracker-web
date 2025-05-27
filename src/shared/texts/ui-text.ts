@@ -1,3 +1,3 @@
 export const UI_TEXT = {
-  menu_projects: 'Проекты' 
+  menu_projects: 'Проекты'
 }

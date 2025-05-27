@@ -1,5 +1,5 @@
 function LoginPage() {
-    return <div>LoginPage</div>;
+  return <div className="w-full">LoginPage</div>;
 }
 
 export const Component = LoginPage;

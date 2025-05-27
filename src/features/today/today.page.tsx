@@ -1,5 +1,5 @@
 function TodayPage() {
-  return <div>today</div>;
+  return <div className="w-full">today</div>;
 }
 
 export const Component = TodayPage;

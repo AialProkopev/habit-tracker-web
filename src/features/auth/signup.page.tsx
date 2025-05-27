@@ -1,5 +1,5 @@
 function SignupPage() {
-    return <div>SignupPage</div>;
+  return <div className="w-full">SignupPage</div>;
 }
 
 export const Component = SignupPage;
