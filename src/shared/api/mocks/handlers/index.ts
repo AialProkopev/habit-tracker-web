@@ -124,7 +124,10 @@ export const handlers = [
   http.get("/projects", () => {
     return HttpResponse.json(projects);
   }),
-  http.get("/projects/{projectId}/tasks", () => {
-    return HttpResponse.json(tasks);
+  http.get("/projects/{projectId}/tasks", ({params}) => {
+    const {projectId} = params;
+
+    const projectTasks = tasks.filter(task => projectId === task.projectId);
+    return HttpResponse.json(projectTasks);
   })
 ]

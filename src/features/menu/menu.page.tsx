@@ -1,10 +1,9 @@
-import "./menu.style.css";
-import Projects from "./projects";
+import ProjectsMenu from "./projects-menu";
 
 export default function Menu() {
   return (
     <div className="menu">
-      <Projects />
+      <ProjectsMenu />
     </div>
   );
 }
