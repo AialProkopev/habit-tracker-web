@@ -1,33 +1,39 @@
 components:
   schemas:
+    RegisterRequest:
+      type: object
+      required: [email, password, username]
+      properties:
+        email: { type: string, format: email, example: "user@example.com" }
+        password: { type: string, format: password, minLength: 8, example: "P@ssw0rd" }
+        username: { type: string, minLength: 3, example: "john_doe" }
 
     LoginRequest:
       type: object
+      required: [email, password]
       properties:
-        email:
-          type: string
-          format: email
-        password:
-          type: string
-          format: password
-      required:
-        - email
-        - password
+        email: { type: string, format: email, example: "user@example.com" }
+        password: { type: string, format: password, example: "P@ssw0rd" }
 
-    LoginResponse:
+    RefreshTokenRequest:
+      type: object
+      required: [refreshToken]
+      properties:
+        refreshToken: { type: string, example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
+
+    # Ответы
+    AuthResponse:
       type: object
       properties:
-        accessToken:
-          type: string
-        refreshToken:
-          type: string
-        expiresIn:
-          type: integer
+        id: { type: string, format: uuid, example: "550e8400-e29b-41d4-a716-446655440000" }
+        email: { type: string, example: "user@example.com" }
+        username: { type: string, example: "john_doe" }
+        accessToken: { type: string, example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
+        refreshToken: { type: string, example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
+        expiresIn: { type: integer, example: 3600 }
 
-    RefreshResponse:
+    RefreshTokenResponse:
       type: object
       properties:
-        accessToken:
-          type: string
-        expiresIn:
-          type: integer
+        accessToken: { type: string, example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
+        expiresIn: { type: integer, example: 3600 }

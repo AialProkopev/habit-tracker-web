@@ -12,7 +12,12 @@ components:
       bearerFormat: JWT
 
 paths:
+
   # Auth
+
+  /auth/register:
+    post:
+      $ref: "./auth/endpoints.yaml#/register"
 
   /auth/login:
     post:
@@ -21,25 +26,29 @@ paths:
   /auth/refresh:
     post:
       $ref: "./auth/endpoints.yaml#/refresh"
+
+  /auth/logout:
+    post:
+      $ref: "./auth/endpoints.yaml#/logout"
   
   #Projects
 
-  /projects:
-    get:
-      $ref: "./projects/endpoints.yaml#/getAllProjects"
-    post:
-      $ref: "./projects/endpoints.yaml#/createProject"
+  # /projects:
+  #   get:
+  #     $ref: "./projects/endpoints.yaml#/getAllProjects"
+  #   post:
+  #     $ref: "./projects/endpoints.yaml#/createProject"
 
-  /projects/{projectId}:
-    delete:
-      $ref: "./projects/endpoints.yaml#/deleteProjectById"
+  # /projects/{projectId}:
+  #   delete:
+  #     $ref: "./projects/endpoints.yaml#/deleteProjectById"
   
-  /projects/{projectId}/tasks:
-    get:
-      $ref: "./projects/endpoints.yaml#/getTasksByProject"
-    post:
-      $ref: "./projects/endpoints.yaml#/createTask"
+  # /projects/{projectId}/tasks:
+  #   get:
+  #     $ref: "./projects/endpoints.yaml#/getTasksByProject"
+  #   post:
+  #     $ref: "./projects/endpoints.yaml#/createTask"
   
-  /projects/{projectId}/tasks/{taskId}:
-    delete:
-      $ref: "./projects/endpoints.yaml#/deleteTask"
+  # /projects/{projectId}/tasks/{taskId}:
+  #   delete:
+  #     $ref: "./projects/endpoints.yaml#/deleteTask"

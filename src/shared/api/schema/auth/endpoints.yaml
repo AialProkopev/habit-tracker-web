@@ -1,8 +1,29 @@
+register:
+  tags: [auth]
+  summary: Регистрация нового пользователя
+  operationId: registerUser
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "./schemas.yaml#/components/schemas/RegisterRequest"
+  responses:
+    201:
+      description: Успешная регистрация
+      content:
+        application/json:
+          schema:
+            $ref: "./schemas.yaml#/components/schemas/AuthResponse"
+    400:
+      $ref: "../responses.yaml#/components/schemas/BadRequest"
+    409:
+      $ref: "../responses.yaml#/components/schemas/Conflict"
+
 login:
-  tags:
-    - auth
-  summary: User login
-  operationId: login
+  tags: [auth]
+  summary: Вход в систему
+  operationId: loginUser
   requestBody:
     required: true
     content:
@@ -10,22 +31,45 @@ login:
         schema:
           $ref: "./schemas.yaml#/components/schemas/LoginRequest"
   responses:
-    "200":
-      description: Successful login
+    200:
+      description: Успешный вход
       content:
         application/json:
           schema:
-            $ref: "./schemas.yaml#/components/schemas/LoginResponse"
+            $ref: "./schemas.yaml#/components/schemas/AuthResponse"
+    401:
+      $ref: "../responses.yaml#/components/schemas/Unauthorized"
+    400:
+      $ref: "../responses.yaml#/components/schemas/BadRequest"
 
 refresh:
-  tags:
-    - auth
-  summary: Refresh token
+  tags: [auth]
+  summary: Обновление access-токена
   operationId: refreshToken
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "./schemas.yaml#/components/schemas/RefreshTokenRequest"
   responses:
-    "200":
-      description: Token refreshed
+    200:
+      description: Токен обновлен
       content:
         application/json:
           schema:
-            $ref: "./schemas.yaml#/components/schemas/RefreshResponse"
+            $ref: "./schemas.yaml#/components/schemas/RefreshTokenResponse"
+    401:
+      $ref: "../responses.yaml#/components/schemas/Unauthorized"
+
+logout:
+  tags: [auth]
+  summary: Выход из системы
+  operationId: logoutUser
+  security:
+    - bearerAuth: []
+  responses:
+    204:
+      description: Успешный выход
+    401:
+      $ref: "../responses.yaml#/components/schemas/Unauthorized"
