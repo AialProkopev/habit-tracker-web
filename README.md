@@ -1,3 +1,6 @@
 # habit-tracker-web
 
-npx msw init public --save
+## Commands
+
+- Запуск моков: npx msw init public --save
+- Генерация схем: npm run api

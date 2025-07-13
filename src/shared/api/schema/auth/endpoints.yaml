@@ -1,0 +1,31 @@
+login:
+  tags:
+    - auth
+  summary: User login
+  operationId: login
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "./schemas.yaml#/components/schemas/LoginRequest"
+  responses:
+    "200":
+      description: Successful login
+      content:
+        application/json:
+          schema:
+            $ref: "./schemas.yaml#/components/schemas/LoginResponse"
+
+refresh:
+  tags:
+    - auth
+  summary: Refresh token
+  operationId: refreshToken
+  responses:
+    "200":
+      description: Token refreshed
+      content:
+        application/json:
+          schema:
+            $ref: "./schemas.yaml#/components/schemas/RefreshResponse"

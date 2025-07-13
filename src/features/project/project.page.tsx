@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 
 import { rqClient } from "@/shared/api/instance";
 import Task from "./task";
@@ -8,7 +8,9 @@ import { PathParams, ROUTES } from "@/shared/routes";
 
 function ProjectPage() {
   const { projectId = "" } = useParams<PathParams[typeof ROUTES.PROJECT]>();
+  const { state } = useLocation();
 
+  console.log(state);
   const {
     data: projectTasks,
     isError,
@@ -23,21 +25,22 @@ function ProjectPage() {
   if (isLoading) {
     return <div>Loading data</div>;
   }
-
   if (isError) {
     return <div>Something went wrong...</div>;
   }
 
   return (
-    <div className="w-full">
-      <h3>Some Project Name</h3>
-      <ul>
-        {projectTasks.map((task) => (
-          <li key={task.id}>
-            <Task data={task} />
-          </li>
-        ))}
-      </ul>
+    <div className="w-full flex justify-center">
+      <div>
+        <h3>projectName</h3>
+        <ul>
+          {projectTasks.map((task) => (
+            <li key={task.id}>
+              <Task data={task} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

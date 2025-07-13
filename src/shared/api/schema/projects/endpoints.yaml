@@ -1,0 +1,107 @@
+getAllProjects:
+  tags: [Projects]
+  summary: Get all projects
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "./schemas.yaml#/components/schemas/Project"
+
+createProject:
+  tags: [Projects]
+  summary: Create project
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "./schemas.yaml#/components/schemas/ProjectCreate"
+  responses:
+    "201":
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: "./schemas.yaml#/components/schemas/Project"
+
+deleteProjectById:
+  tags: [Projects]
+  summary: Delete project
+  parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    "204":
+      description: No Content
+
+getTasksByProject:
+    tags: [Tasks]
+    summary: Get project tasks
+    parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    responses:
+      "200":
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "./schemas.yaml#/components/schemas/Task"
+
+createTask:
+  tags: [Tasks]
+  summary: Create task
+  parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "./schemas.yaml#/components/schemas/TaskCreate"
+  responses:
+    "201":
+      description: Created
+      content:
+        application/json:
+          schema:
+            $ref: "./schemas.yaml#/components/schemas/Task"
+
+deleteTask:
+  tags: [Tasks]
+  summary: Delete task
+  parameters:
+    - name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: taskId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    "204":
+      description: No Content
