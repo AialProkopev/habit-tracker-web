@@ -37,3 +37,10 @@ components:
       properties:
         accessToken: { type: string, example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
         expiresIn: { type: integer, example: 3600 }
+
+    VerifyAccessTokenResponse:
+      type: object
+      properties:
+        id: { type: string, format: uuid, example: "550e8400-e29b-41d4-a716-446655440000" }
+        email: { type: string, example: "user@example.com" }
+        username: { type: string, example: "john_doe" }

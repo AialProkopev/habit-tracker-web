@@ -120,7 +120,7 @@ const tasks: ApiSchemas["Task"][] = [
 ];
 
 
-export const handlers = [
+export const projectsHandlers = [
   http.get("/projects", () => {
     return HttpResponse.json(projects);
   }),

@@ -1,8 +1,9 @@
 getAllProjects:
-  tags: [Projects]
-  summary: Get all projects
+  tags: [projects]
+  summary: Дает список всех проектов
+  operationId: getAllProjects
   responses:
-    "200":
+    200:
       description: OK
       content:
         application/json:
@@ -10,6 +11,10 @@ getAllProjects:
             type: array
             items:
               $ref: "./schemas.yaml#/components/schemas/Project"
+    400:
+      $ref: "../responses.yaml#/components/schemas/BadRequest"
+    401:
+      $ref: "../responses.yaml#/components/schemas/Unauthorized"
 
 createProject:
   tags: [Projects]

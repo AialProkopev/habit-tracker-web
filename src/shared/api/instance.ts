@@ -8,3 +8,13 @@ export const fetchClient = createFetchClient<ApiPaths>({
 });
 
 export const rqClient = createClient(fetchClient);
+
+fetchClient.use({
+  onRequest({ request }) {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      request.headers.set("Authorization", `Bearer ${token}`);
+    }
+  },
+});

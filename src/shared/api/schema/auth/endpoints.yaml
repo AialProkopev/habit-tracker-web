@@ -42,6 +42,22 @@ login:
     400:
       $ref: "../responses.yaml#/components/schemas/BadRequest"
 
+verify:
+  tags: [auth]
+  summary: Проверка валидности access токена
+  operationId: verifyToken
+  responses:
+    200:
+      description: Валидный токен
+      content:
+        application/json:
+          schema:
+            $ref: "./schemas.yaml#/components/schemas/VerifyAccessTokenResponse"
+    401:
+      $ref: "../responses.yaml#/components/schemas/Unauthorized"
+    400:
+      $ref: "../responses.yaml#/components/schemas/BadRequest"
+
 refresh:
   tags: [auth]
   summary: Обновление access-токена

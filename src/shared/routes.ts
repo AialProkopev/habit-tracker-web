@@ -1,20 +1,19 @@
-
 export const ROUTES = {
-    HOME: "/",
-    LOGIN: "/login",
-    SIGNUP: "/signup",
-    TODAY: "/today",
-    PROJECT: "/project/:projectId"
+  HOME: "/",
+  LOGIN: "/login",
+  REGISTER: "/register",
+  TODAY: "/today",
+  PROJECT: "/project/:projectId",
 } as const;
 
 export type PathParams = {
-    [ROUTES.PROJECT]: {
-        projectId: string;
-    };
+  [ROUTES.PROJECT]: {
+    projectId: string;
+  };
 };
 
 declare module "react-router" {
-    interface Register {
-        params: PathParams;
-    }
+  interface Register {
+    params: PathParams;
+  }
 }
